@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .contact-info {
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      .contact-info p {
+        margin: 5px 0;
+      }
+
+      .map {
+        height: 400px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+      }
+
+      .contact-details {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .contact-details a {
+        left: 147px;
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 10px;
+        position: relative;
+        top: 48px;
+      }
+
+      .contact-details a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Navbar styles (copied from quiz page) */
+      .navbar {
+        background-color: #343a40;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+        color: #007bff !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+        margin-left: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: #007bff !important;
+      }
+
+      .dropdown-menu {
+        background-color: #343a40;
+      }
+
+      .dropdown-item {
+        color: white;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .dropdown-item:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .d-inline-block-align-top {
+        position: relative;
+        left: 0%;
+        size: 37px;
+        top: -7px;
+        border-radius: 50%;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+        position: relative;
+        left: 38%;
+        font-size: 37px;
+        color: #66cdaa;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu {
+        display: none;
+        background-color: #343a40; /* Darker gray dropdown */
+      }
+
+      .dropdown-item {
+        color: white;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+      }
+
+      .dropdown-item:hover {
+        background-color: #007bff; /* Blue on hover */
+        color: white;
+      }
+
+      #slogan {
+        position: relative;
+        top: 38px;
+        left: 289px;
+        color: chartreuse;
+        font-family: cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">
+        <img
+          src="logo.png.png"
+          width="50"
+          height="50"
+          class="d-inline-block-align-top"
+          alt="Logo"
+        />
+        Aai Computers
+      </a>
+      <br />
+      <p id="slogan">We Believe In Practical Knowledge</p>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Courses
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Basic Computer Course</a>
+              <a class="dropdown-item" href="#">Web Development</a>
+              <a class="dropdown-item" href="#">Programming in C</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="quiz.html">Quiz</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Our Address</h3>
+          <p>Aai Computers</p>
+          <p>Karegoan Rd, Ughda Mahadev, Parbhani - 431401</p>
+        </div>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3476.2599470967884!2d76.79278334777759!3d19.25875561491447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd0183958ade3e3%3A0xd8af1f3e0cef30f4!2sUghda%20Mahadev%20Mandir!5e1!3m2!1sen!2sin!4v1739361726964!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      <div class="contact-details">
+        <a href="tel:+918482888284">Phone: +91 84828 88284</a>
+        <a href="https://wa.me/+918482888284">WhatsApp: +91 84828 88284</a>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

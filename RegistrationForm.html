@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aai Computers Registration Form</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid black;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input:focus{
+            border: 3px solid blue;
+            box-shadow: 0 0 20px 5px rgba(33, 150, 243, 0.5);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logo-container{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img{
+            max-width: 200px; /* Adjust as needed */
+            height: auto;
+            border-radius: 80px;
+        }
+        .submit {
+            display: inline-block; /* Make it behave like a button */
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            text-decoration: none; /* Remove underline from link */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+}
+        
+       
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.png.png" alt="Logo">  </div> <label for="logoUpload">
+        <h2>Aai Computers Registration Form</h2>
+        <form action="quiz.html" method="post">
+            <div class="form-group">
+                <label for="name">Name: *</label>
+                <input type="text" id="name" name="name" autocomplete="on" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email: *</label>
+                <input type="email" id="email" name="email" autocomplete="on" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone: *</label>
+                <input type="tel" id="phone" name="phone" autocomplete="on" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course: *</label>
+                <select id="course" name="course">
+                    <option value="basic">Basic Computer Course</option>
+                    <option value="advance">Advance Computer Course</option>
+                    <option value="tally">Tally</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address">Address: *</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <input type="submit" class="submit">
+        </form>
+    </div>
+
+</body>
+</html>

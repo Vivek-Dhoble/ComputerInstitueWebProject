@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        background-color: #f8f9fa; /* Light gray background */
+      }
+
+      .navbar {
+        background-color: #343a40; /* Darker gray navbar */
+      }
+
+      .d-inline-block-align-top {
+        position: relative;
+        left: 37%;
+        size: 37px;
+        border-radius: 50%;
+      }
+      .navbar-brand {
+        font-weight: bold;
+        position: relative;
+        left: 38%;
+        font-size: 37px;
+        color: #66cdaa;
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+        margin-left: 10px;
+        transition: color 0.3s ease; /* Smooth color transition */
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: cyan !important; /* Blue on hover */
+      }
+
+      .navbar-nav .dropdown-menu {
+        background-color: #343a40; /* Darker gray dropdown */
+      }
+
+      .navbar-nav .dropdown-item {
+        color: white;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+      }
+
+      .navbar-nav .dropdown-item:hover {
+        background-color: #007bff; /* Blue on hover */
+        color: white;
+      }
+      .quiz-container {
+        margin-top: 50px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .question {
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+
+      .options button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 15px;
+        font-size: 1.1rem;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        background-color: #e0e0e0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: 1px solid #ccc;
+      }
+
+      .options button:hover {
+        background-color: #d0d0d0;
+      }
+
+      .options button.selected {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+      }
+
+      #submit-btn {
+        background-color: #007bff;
+        border-color: #007bff;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      .card-header {
+        background: darkorange;
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Footer styles */
+      footer {
+        background-color: #343a40; /* Darker gray footer */
+        color: white;
+        padding: 20px;
+        text-align: center;
+        margin-top: 30px; /* Space between content and footer */
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu {
+        display: none;
+        background-color: #343a40; /* Darker gray dropdown */
+      }
+
+      .dropdown-item {
+        color: white;
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+      }
+
+      .dropdown-item:hover {
+        background-color: #007bff; /* Blue on hover */
+        color: white;
+      }
+
+      #slogan {
+        position: relative;
+        top: 38px;
+        left: 289px;
+        color: chartreuse;
+        font-family: cursive;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <img
+        src="logo.png.png"
+        alt="Aai Computers Logo"
+        width="50"
+        height="50"
+        class="d-inline-block-align-top"
+      />
+      <h1 class="navbar-brand">Aai Computers</h1>
+      <br />
+      <p id="slogan">We Believe In Practical Knowledge</p>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Courses
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Basic Computer Course</a>
+              <a class="dropdown-item" href="#">Web Development</a>
+              <a class="dropdown-item" href="#">Programming in C</a>
+              <a class="dropdown-item" href="#">Programming in Java</a>
+              <a class="dropdown-item" href="#">Tally</a>
+              <a class="dropdown-item" href="#">MS Office</a>
+              <a class="dropdown-item" href="#">DTP</a>
+              <a class="dropdown-item" href="#">Graphic Designing</a>
+              <a class="dropdown-item" href="#">Video Editing</a>
+              <a class="dropdown-item" href="#">Spoken English</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 quiz-container">
+          <div class="card">
+            <div class="card-header">
+              <h2>Quiz</h2>
+            </div>
+            <div class="card-body">
+              <div id="quiz-area"></div>
+              <button id="submit-btn" class="btn btn-primary">Submit</button>
+              <div id="result" style="display: none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer mt-auto py-3">
+      <div class="container">
+        <span class="text-muted"
+          >&copy; 2023 Aai Computers. All rights reserved.</span
+        >
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      const quizData = [
+        // **ADD YOUR QUIZ DATA HERE**
+        {
+          question: "What is the difference between hardware and software?",
+          options: [
+            "Hardware is physical, software is programs.",
+            "Hardware is programs, software is physical.",
+            "Hardware is data, software is instructions.",
+            "Hardware is input, software is output.",
+          ],
+          answer: "Hardware is physical, software is programs.",
+        },
+        {
+          question: "What is an operating system?",
+          options: [
+            "A program that manages computer hardware.",
+            "A type of application software.",
+            "A hardware component.",
+            "A network protocol.",
+          ],
+          answer: "A program that manages computer hardware.",
+        },
+        {
+          question: "What is RAM?",
+          options: [
+            "Random Access Memory",
+            "Read Only Memory",
+            "Central Processing Unit",
+            "Hard Disk Drive",
+          ],
+          answer: "Random Access Memory",
+        },
+        {
+          question: "What is the difference between a file and a folder?",
+          options: [
+            "A file is data, a folder is a container.",
+            "A folder is data, a file is a container.",
+            "A file is a program, a folder is data.",
+            "A file is temporary, a folder is permanent.",
+          ],
+          answer: "A file is data, a folder is a container.",
+        },
+        {
+          question: "What is the internet?",
+          options: [
+            "A global network of interconnected computers.",
+            "A type of software.",
+            "A hardware component.",
+            "A specific website.",
+          ],
+          answer: "A global network of interconnected computers.",
+        },
+        {
+          question: "What is a URL?",
+          options: [
+            "Uniform Resource Locator",
+            "Universal Resource Locator",
+            "Unique Resource Locator",
+            "Uniform Resource Location",
+          ],
+          answer: "Uniform Resource Locator",
+        },
+        {
+          question: "What is an IP address?",
+          options: [
+            "Internet Protocol address",
+            "Internet Provider address",
+            "Internal Protocol address",
+            "Internet Processing address",
+          ],
+          answer: "Internet Protocol address",
+        },
+        {
+          question: "What is a web browser?",
+          options: [
+            "Software to access the internet",
+            "A type of website",
+            "A hardware component",
+            "A network protocol",
+          ],
+          answer: "Software to access the internet",
+        },
+        {
+          question: "What is an email client?",
+          options: [
+            "Software to manage emails",
+            "A type of email",
+            "A hardware component",
+            "A network protocol",
+          ],
+          answer: "Software to manage emails",
+        },
+        {
+          question: "What is a search engine?",
+          options: [
+            "A website to find information",
+            "A type of software",
+            "A hardware component",
+            "A network protocol",
+          ],
+          answer: "A website to find information",
+        },
+        {
+          question: "What is a computer network?",
+          options: [
+            "Interconnected computers for communication",
+            "A type of software",
+            "A hardware component",
+            "A network cable",
+          ],
+          answer: "Interconnected computers for communication",
+        },
+        {
+          question: "What is the difference between LAN and WAN?",
+          options: [
+            "Local vs. Wide Area Network",
+            "Long vs. Wide Area Network",
+            "Local vs. Wireless Area Network",
+            "Long vs. Wireless Area Network",
+          ],
+          answer: "Local vs. Wide Area Network",
+        },
+        {
+          question: "What is a database?",
+          options: [
+            "Organized collection of data",
+            "A type of software",
+            "A hardware component",
+            "A network protocol",
+          ],
+          answer: "Organized collection of data",
+        },
+        {
+          question: "What is a computer virus?",
+          options: [
+            "Malicious software that replicates itself",
+            "A type of hardware problem",
+            "A network issue",
+            "A data loss event",
+          ],
+          answer: "Malicious software that replicates itself",
+        },
+        {
+          question: "What is a firewall?",
+          options: [
+            "A security system to control network traffic",
+            "A type of antivirus software",
+            "A hardware component",
+            "A network cable",
+          ],
+          answer: "A security system to control network traffic",
+        },
+        {
+          question: "What is cloud computing?",
+          options: [
+            "On-demand access to computing resources over the internet",
+            "Storing data on a local hard drive",
+            "Using a physical server",
+            "Developing software applications",
+          ],
+          answer: "On-demand access to computing resources over the internet",
+        },
+        {
+          question: "What is artificial intelligence (AI)?",
+          options: [
+            "Simulating human intelligence in machines",
+            "Developing software applications",
+            "Building hardware components",
+            "Managing computer networks",
+          ],
+          answer: "Simulating human intelligence in machines",
+        },
+        {
+          question: "What is machine learning?",
+          options: [
+            "A type of AI where systems learn from data",
+            "Developing software applications",
+            "Building hardware components",
+            "Managing computer networks",
+          ],
+          answer: "A type of AI where systems learn from data",
+        },
+        {
+          question:
+            "What is the difference between a laptop and a desktop computer?",
+          options: [
+            "Portable vs. stationary",
+            "More powerful vs. less powerful",
+            "Different operating systems",
+            "Different input devices",
+          ],
+          answer: "Portable vs. stationary",
+        },
+        {
+          question: "What is a mobile operating system?",
+          options: [
+            "OS for smartphones and tablets",
+            "OS for desktop computers",
+            "OS for servers",
+            "OS for embedded systems",
+          ],
+          answer: "OS for smartphones and tablets",
+        },
+        {
+          question: "What is a peripheral device?",
+          options: [
+            "Devices connected to a computer",
+            "Internal components of a computer",
+            "Software applications",
+            "Network protocols",
+          ],
+          answer: "Devices connected to a computer",
+        },
+        {
+          question: "What is a USB port?",
+          options: [
+            "Universal Serial Bus",
+            "Unique Serial Bus",
+            "Universal System Bus",
+            "Unique System Bus",
+          ],
+          answer: "Universal Serial Bus",
+        },
+        {
+          question: "What is a CPU?",
+          options: [
+            "Central Processing Unit",
+            "Central Programming Unit",
+            "Computer Processing Unit",
+            "Computer Programming Unit",
+          ],
+          answer: "Central Processing Unit",
+        },
+        {
+          question: "What is the difference between a hard drive and an SSD?",
+          options: [
+            "Mechanical vs. solid-state",
+            "Internal vs. external",
+            "Primary vs. secondary",
+            "Temporary vs. permanent",
+          ],
+          answer: "Mechanical vs. solid-state",
+        },
+        {
+          question: "What is a programming language?",
+          options: [
+            "A set of instructions for computers",
+            "A type of software application",
+            "A hardware component",
+            "A network protocol",
+          ],
+          answer: "A set of instructions for computers",
+        },
+        // HTML (10 Questions)
+        {
+          question: "What does HTML stand for?",
+          options: [
+            "Hyper Text Markup Language",
+            "High Tech Modern Language",
+            "Hyper Transfer Markup Language",
+            "Home Tool Markup Language",
+          ],
+          answer: "Hyper Text Markup Language",
+        },
+        {
+          question: "What is the basic structure of an HTML document?",
+          options: [
+            "<html><head></head><body></body></html>",
+            "<head><body></body></head>",
+            "<body><head></head></body>",
+            "<html><body></body></html>",
+          ],
+          answer: "<html><head></head><body></body></html>",
+        },
+        {
+          question: "What are HTML tags?",
+          options: [
+            "Codes that define elements",
+            "Instructions for styling",
+            "Commands for server-side logic",
+            "Variables in JavaScript",
+          ],
+          answer: "Codes that define elements",
+        },
+        {
+          question: "What is the purpose of the <head> tag?",
+          options: [
+            "Contains metadata",
+            "Contains visible content",
+            "Defines headings",
+            "Creates menus",
+          ],
+          answer: "Contains metadata",
+        },
+        {
+          question: "What is the purpose of the <body> tag?",
+          options: [
+            "Contains visible content",
+            "Contains metadata",
+            "Defines headings",
+            "Creates menus",
+          ],
+          answer: "Contains visible content",
+        },
+        {
+          question: "Which tag is used for paragraphs?",
+          options: ["<p>", "<h1>", "<div>", "<span>"],
+          answer: "<p>",
+        },
+        {
+          question: "What is an HTML attribute?",
+          options: [
+            "Extra info about elements",
+            "HTML element names",
+            "CSS styles",
+            "JavaScript functions",
+          ],
+          answer: "Extra info about elements",
+        },
+        {
+          question: "How do you create links?",
+          options: [
+            "<a> tag with href",
+            "<link> tag",
+            "<button> tag",
+            "<form> tag",
+          ],
+          answer: "<a> tag with href",
+        },
+        {
+          question: "How do you add images?",
+          options: [
+            "<img> tag with src",
+            "<picture> tag",
+            "<div> tag",
+            "CSS background",
+          ],
+          answer: "<img> tag with src",
+        },
+        {
+          question: "What are HTML forms for?",
+          options: [
+            "Collecting user input",
+            "Displaying data",
+            "Creating links",
+            "Styling content",
+          ],
+          answer: "Collecting user input",
+        },
+
+        // C (10 Questions)
+        {
+          question: "What is a variable in C?",
+          options: [
+            "A named storage location",
+            "A type of function",
+            "A control flow statement",
+            "A preprocessor directive",
+          ],
+          answer: "A named storage location",
+        },
+        {
+          question: "What are the basic data types in C?",
+          options: [
+            "int, float, char",
+            "string, boolean, array",
+            "integer, decimal, character",
+            "text, number, letter",
+          ],
+          answer: "int, float, char",
+        },
+        {
+          question: "What are operators in C?",
+          options: [
+            "Symbols for operations",
+            "Keywords for control",
+            "Functions for I/O",
+            "Directives for preprocessor",
+          ],
+          answer: "Symbols for operations",
+        },
+        {
+          question: "What are control flow statements in C?",
+          options: [
+            "Control program execution",
+            "Declare variables",
+            "Define functions",
+            "Perform calculations",
+          ],
+          answer: "Control program execution",
+        },
+        {
+          question: "What are functions in C?",
+          options: [
+            "Reusable code blocks",
+            "Variables for multiple values",
+            "Operators for calculations",
+            "Data type definitions",
+          ],
+          answer: "Reusable code blocks",
+        },
+        {
+          question: "What is an array in C?",
+          options: [
+            "Collection of same type elements",
+            "Single memory value",
+            "Specific task function",
+            "Memory address pointer",
+          ],
+          answer: "Collection of same type elements",
+        },
+        {
+          question: "What is a pointer in C?",
+          options: [
+            "Variable storing memory address",
+            "Function returning value",
+            "Character data type",
+            "Arithmetic operator",
+          ],
+          answer: "Variable storing memory address",
+        },
+        {
+          question: "What is a structure in C?",
+          options: [
+            "Collection of different type variables",
+            "Function with multiple arguments",
+            "Pointer to function",
+            "Array of pointers",
+          ],
+          answer: "Collection of different type variables",
+        },
+        {
+          question: "What is file handling in C?",
+          options: [
+            "Working with files",
+            "Declaring variables",
+            "Defining functions",
+            "Performing calculations",
+          ],
+          answer: "Working with files",
+        },
+        {
+          question: "What is the difference between printf and scanf?",
+          options: [
+            "printf for output, scanf for input",
+            "printf for input, scanf for output",
+            "They are the same",
+            "For file handling",
+          ],
+          answer: "printf for output, scanf for input",
+        },
+
+        // JavaScript (5 Questions)
+        {
+          question: "What is JavaScript used for?",
+          options: [
+            "Website interactivity",
+            "Website styling",
+            "Server-side applications",
+            "Database management",
+          ],
+          answer: "Website interactivity",
+        },
+        {
+          question: "Difference between var, let, const?",
+          options: [
+            "Scope and mutability",
+            "Data type",
+            "Function type",
+            "Operator type",
+          ],
+          answer: "Scope and mutability",
+        },
+        {
+          question: "Common JavaScript data types?",
+          options: [
+            "number, string, boolean, object, undefined",
+            "integer, text, true/false, collection, empty",
+            "int, str, bool, obj, nul",
+            "float, char, logical, dict, void",
+          ],
+          answer: "number, string, boolean, object, undefined",
+        },
+        {
+          question: "How to add event listeners?",
+          options: [
+            "addEventListener()",
+            "onclick()",
+            "attachEvent()",
+            "onEvent()",
+          ],
+          answer: "addEventListener()",
+        },
+        {
+          question: "What are closures?",
+          options: [
+            "Functions accessing outer scope variables",
+            "Globally declared variables",
+            "Functions inside functions",
+            "Objects with key-value pairs",
+          ],
+          answer: "Functions accessing outer scope variables",
+        },
+      ]; // Keep your quiz data here
+
+      const quizArea = document.getElementById("quiz-area");
+      const submitButton = document.getElementById("submit-btn");
+      const resultDiv = document.getElementById("result");
+
+      let currentQuestion = 0;
+      let score = 0;
+
+      function loadQuiz() {
+        const currentQuizData = quizData[currentQuestion];
+        quizArea.innerHTML = "";
+
+        const questionDiv = document.createElement("div");
+        questionDiv.className = "question";
+        questionDiv.innerHTML = `<h3>${currentQuizData.question}</h3>`;
+        quizArea.appendChild(questionDiv);
+
+        const optionsDiv = document.createElement("div");
+        optionsDiv.className = "options";
+        currentQuizData.options.forEach((option) => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.value = option;
+          button.addEventListener("click", () => {
+            const buttons = optionsDiv.querySelectorAll("button");
+            buttons.forEach((btn) => btn.classList.remove("selected"));
+            button.classList.add("selected");
+          });
+          optionsDiv.appendChild(button);
+        });
+        quizArea.appendChild(optionsDiv);
+      }
+
+      function checkAnswer() {
+        const selectedButton = document.querySelector(
+          ".options button.selected"
+        );
+        if (selectedButton) {
+          const answer = selectedButton.value;
+          if (answer === quizData[currentQuestion].answer) {
+            score++;
+          }
+        }
+      }
+
+      submitButton.addEventListener("click", () => {
+        checkAnswer();
+
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuiz();
+        } else {
+          showResult();
+        }
+      });
+
+      function showResult() {
+        quizArea.style.display = "none";
+        submitButton.style.display = "none";
+        resultDiv.style.display = "block";
+
+        resultDiv.innerHTML = `<h2>You scored ${score} out of ${quizData.length}.</h2>`;
+        resultDiv.innerHTML += `<p>Your final score is ${score}/${quizData.length}</p>`;
+        resultDiv.style.color = score >= quizData.length / 2 ? "green" : "red";
+      }
+
+      loadQuiz();
+    </script>
+  </body>
+</html>
